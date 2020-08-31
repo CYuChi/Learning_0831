@@ -1,5 +1,8 @@
 <?php
     session_start();
+    //抓取網址辨別來源地
+    $redir = $_POST["redir"];
+    //抓表單資料
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -7,7 +10,10 @@
     if($password == "1234"){
         $_SESSION["username"] = $username;
         $_SESSION["email"] = $email;
-        header("Location:index.php");
+        if($redir != NULL)
+            header("Location: $redir");
+        else
+            header("Location:index.php");
         exit;
     }
     else{
