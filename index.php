@@ -2,6 +2,7 @@
     session_start(); 
     $username = $_SESSION["username"];
     $email = $_SESSION["email"];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,9 @@
             else{
                 echo "歡迎訪客，登入獲得更多資訊!<br>";
             }
+            include "footer.php";
         ?>
+       
         <p>2020/08/31</p>
     </body>
 </html>
