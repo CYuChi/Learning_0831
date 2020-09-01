@@ -20,22 +20,38 @@
     <body>
         <h2>螢幕比較</h2>
         <hr>
+        <!-- option set  from here   ----  select name comChoice      -->
+        <form method = 'POST' action="compare.php">
+            <select name = comChoice>
+            <?php
+                //open txt 
+                $fp = fopen("product.txt" , "r")or die("bye");
+                //read txt
+                $data = fread($fp , filesize("product.txt"));
+                //close txt
+                fclose($fp);
+                //cut once
+                $computer = explode("\n",$data);
+                //cut twice
+                foreach($computer as $comAndModel){
+                    $ComAndVideo = explode("," , $comAndModel);
+                    $model = trim($ComAndVideo[0]);
+                    $vid = trim($ComAndVideo[1]);
+                    // option set here ---- value = $vid --- $model = $model 
+                    echo "<option value =" . $vid . ">" . $model . "</option>";
+                    echo str_replace("^^^^" , $vid , $tags);
+                    echo "<br>";
+                }
+            ?>
+            </select>
+            <input type="submit" value="開始轉換">
+        </form>
+        <!-- show video & model -->
         <?php
-            //echo $tags;
-            $fp = fopen("product.txt" , "r")or die("bye");
-            $data = fread($fp , filesize("product.txt"));
-            fclose($fp);
-            $computer = explode("\n",$data);
-            foreach($computer as $comAndModel){
-                $ComAndVideo = explode("," , $comAndModel);
-                $model = trim($ComAndVideo[0]);
-                $vid = trim($ComAndVideo[1]);
-                echo $model . "<br>";
-                echo str_replace("^^^^" , $vid , $tags);
-                echo "<br>";
-                
-            
-            }
+            //$model = $_POST[model]
+            $comChoice = $_POST["comChoice"];
+            echo str_replace("^^^^" , $comChoice , $tags);
+            echo "<br>";
         ?>
     </body>
     
