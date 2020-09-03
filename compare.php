@@ -50,6 +50,8 @@
         <?php
             //$model = $_POST[model]
             $comChoice = $_POST["comChoice"];
+            if($comChoice == NULL)
+                $comChoice = "nL7hq9MkcBs" ;
             echo str_replace("^^^^" , $comChoice , $tags);
             echo "<br>";
         ?>
