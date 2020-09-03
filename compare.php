@@ -1,4 +1,4 @@
-<h3>產品比較</h3>
+<h1>螢幕比較</h1>
 <hr>
 <?php
     session_start();
@@ -15,10 +15,10 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="compare.css">
         <title>產品比較</title>
     </head>
     <body>
-        <h2>螢幕比較</h2>
         <hr>
         <!-- option set  from here   ----  select name comChoice      -->
         <form method = 'POST' action="compare.php">
